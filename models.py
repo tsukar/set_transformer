@@ -44,3 +44,6 @@ class SetTransformer(nn.Module):
 
     def forward(self, X):
         return self.dec(self.enc(X))
+
+    def explain(self, X):
+        return list(self.dec.children())[0].explain(self.enc(X))
